@@ -22,8 +22,8 @@ This repository contains the source code for a simple E-Commerce application wri
 1. Clone the repository:
    ```bash
    git clone https://github.com/xradeel/E-Commerce-application-using-Swing-Java.git
-1. ## Navigate to Source directory:
+## Navigate to Source directory:
 cd E-Commerce-application-using-Swing-Java/src
-2. ## Compile and run the main class:
-javac Main.java
+## Compile and run the main class:
+javac Main.java\
 java Main
