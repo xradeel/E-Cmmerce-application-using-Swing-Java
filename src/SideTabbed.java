@@ -1,61 +1,64 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class SideTabbed extends ShowProduct {
+public class SideTabbed extends SearchBar {
     JTabbedPane tabbedPane;
-    ImageIcon homeIcon;
-    ImageIcon shoppingIcon;
-    ImageIcon supportIcon;
-    ImageIcon announcementIcon;
-//    JLabel homeIconLabel;
-//    JLabel shoppingIconLabel;
-//    JLabel supportIconLabel;
-//    JLabel announcementIconLabel;
-    JPanel homePanel;
-    JPanel shoppingPanel;
-    JPanel supportPanel;
-    JPanel announcementPanel;
+    ImageIcon computerIcon;
+    JPanel mainShopPanel, dileveryDataPanel;;
+    ImageIcon consoleIcon;
+    ImageIcon gameIcon;
+    ImageIcon accessoriesIcon, gadgetsIcon, homeIcon;
+    JPanel gadgetsPanel;
+    JPanel consolesPanel;
+    JPanel gamesPanel;
+    JPanel accessoriesPanel, computerPanel;
     SideTabbed(){
         tabbedPane= new JTabbedPane(JTabbedPane.LEFT);
-        tabbedPane.setBounds(0,50,1600,900);
+
+        mainShopPanel = new JPanel();
+        mainShopPanel.setLayout(null);
+        mainShopPanel.setBackground(new Color(0x722edb));
 
 
         //set imageIcons for the tabs
         homeIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\homepage.png");
-        shoppingIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\shoppingIcon.png");
-        supportIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\supportIcon.png");
-        announcementIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\announcementIcon.png");
+        computerIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\computerIcon.png");
+        consoleIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\consoleIcon.png");
+        gameIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\gameIcon.png");
+        accessoriesIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\accessoriesIcon.png");
+        gadgetsIcon= new ImageIcon("D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\icon\\orderNow.png");
 
-        homePanel= new JPanel();
-        shoppingPanel= new JPanel();
-        supportPanel= new JPanel();
-        announcementPanel= new JPanel();
+        gadgetsPanel= new JPanel();
+        computerPanel= new JPanel();
+        consolesPanel= new JPanel();
+        gamesPanel= new JPanel();
+        accessoriesPanel= new JPanel();
 
-//        homeIconLabel= new JLabel();
-//        shoppingIconLabel= new JLabel();
-//        supportIconLabel= new JLabel();
-//        announcementIconLabel= new JLabel();
-//
-//        homeIconLabel.setIcon(homeIcon);
-//        shoppingIconLabel.setIcon(shoppingIcon);
-//        supportIconLabel.setIcon(supportIcon);
-//        announcementIconLabel.setIcon(announcementIcon);
+
+        computerPanel.setBackground(new Color(0x722edb));
+        consolesPanel.setBackground(new Color(0x722edb));
+        gamesPanel.setBackground(new Color(0x722edb));
+        accessoriesPanel.setBackground(new Color(0x722edb));
+        gadgetsPanel.setBackground(new Color(0x722edb));
+
+
 
 //        add tabs in the main panel
         tabbedPane.addTab("Home", homeIcon, mainShopPanel);
-        tabbedPane.addTab("Shopping", shoppingIcon, shoppingPanel);
-        tabbedPane.addTab("Support", supportIcon, supportPanel);
-        tabbedPane.addTab("Announcement", announcementIcon, announcementPanel);
+        tabbedPane.addTab("Computers", computerIcon, computerPanel);
+        tabbedPane.addTab("Consoles", consoleIcon, consolesPanel);
+        tabbedPane.addTab("Games", gameIcon, gamesPanel);
+        tabbedPane.addTab("Accessories", accessoriesIcon, accessoriesPanel);
+        tabbedPane.addTab("CPU & GPU", gadgetsIcon, gadgetsPanel);
 
         tabbedPane.setBorder(BorderFactory.createEmptyBorder());
-//        tabbedPane.;
 
         // Properties of the tabs
         tabbedPane.setBackground(new Color(0x5115C0));
+        tabbedPane.setBounds(0,50,1580,810);
 
-
-
-        this.add(tabbedPane);
-        this.setVisible(true);
+        frame.setResizable(false);
+        frame.add(tabbedPane);
+        frame.setVisible(true);
     }
 }

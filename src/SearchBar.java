@@ -14,13 +14,12 @@ public class SearchBar extends MainFrame{
         searchIconBtn = new JButton();
 
         LineBorder lineBorder =new LineBorder(Color.white, 8, true);
-        searchField.setBorder(lineBorder );
+        searchField.setBorder(lineBorder);
 
         searchBarPanel.setBackground(new Color(0x5115C0));
         searchField.setFont(new Font("Times new Roman", Font.PLAIN, 15));
         searchBarPanel.setPreferredSize(new Dimension(50, 50));
         searchBarPanel.setBounds(0,0,1600, 50);
-//        this.add(searchBarPanel, BorderLayout.NORTH);
 
         searchIconBtn.setBorderPainted(false);
         searchIconBtn.setBackground(new Color(0x722edb));
@@ -30,8 +29,8 @@ public class SearchBar extends MainFrame{
         searchBarPanel.add(searchField);
         searchBarPanel.add(searchIconBtn);
 
-        this.add(searchBarPanel);
-        this.setVisible(true);
+        frame.add(searchBarPanel);
+        frame.setVisible(true);
     }
 
 }

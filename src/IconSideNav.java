@@ -18,7 +18,7 @@ public class IconSideNav extends MainFrame implements MouseListener {
     ImageIcon announcementIcon;
     IconSideNav(){
 
-        this.setLayout(new BorderLayout());
+        frame.setLayout(new BorderLayout());
         outerNavPanel= new JPanel();
 //        /*mainShopPanel*/= new JPanel();
 
@@ -32,7 +32,7 @@ public class IconSideNav extends MainFrame implements MouseListener {
         outerNavPanel.setPreferredSize(new Dimension(80, 100));
 //        /*mainShopPanel*/.setPreferredSize(new Dimension(400,500));
 
-        this.add(outerNavPanel, BorderLayout.WEST);
+        frame.add(outerNavPanel, BorderLayout.WEST);
 //        this.add(/*mainShopPanel*/, BorderLayout.CENTER);
 
         //------------- Icons in side navbar ----------------

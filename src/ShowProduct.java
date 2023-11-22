@@ -1,58 +1,31 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 
-public class ShowProduct extends SearchBar implements MouseListener {
-    static JPanel mainShopPanel,categories,topRated;
+public class ShowProduct extends DileveryForm implements MouseListener {
+    static JPanel categories;
     static JPanel productPanel;
-    static JLabel img,catLabel,topRateLabel;
-    static ImageIcon productPic;
-    static JLabel productDis;
+    static JLabel imgLabel,catLabel;
+    JButton order;
+    static JLabel productDis, productNo, productRs;
     static JLabel productName;
-    JScrollPane scrollPane;
 
-    public <SingleClientPanel> ShowProduct() {
-
-        mainShopPanel = new JPanel();
-        mainShopPanel.setLayout(null);
-        mainShopPanel.setBackground(new Color(0x722edb));
-
-//        scrollPane.setVisible(true);
-
+    public ShowProduct() {
         categories = new JPanel();
         categories.setBounds(30, 80, 1400, 700);
         categories.setBackground(new Color(0x722edb));
         categories.setLayout(new GridLayout(2, 3, 100, 40));
-
-        topRated = new JPanel();
-        topRated.setBounds(30, 80, 1400, 700);
-        topRated.setBackground(new Color(0x722edb));
-        topRated.setLayout(new GridLayout(2, 3, 100, 40));
-
 
         catLabel = new JLabel("CATEGORIES");
         mainShopPanel.add(catLabel);
         catLabel.setBounds(20, 30, 1000, 35);
         catLabel.setFont(new Font("Raleway", Font.ITALIC, 35));
         catLabel.setForeground(Color.white);
-
-        topRateLabel = new JLabel("TOP RATED");
-        topRateLabel.setBounds(20, 800, 1000, 35);
-        topRateLabel.setFont(new Font("Raleway", Font.ITALIC, 35));
-        topRateLabel.setForeground(Color.white);
-
-//
-//        scrollPane = new JScrollPane(categories);
-//        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//        scrollPane.setPreferredSize(new Dimension(1700, 900));
-//        scrollPane.setViewportBorder(null);
-//        scrollPane.setViewportView(categories);
-//        scrollPane.setViewportView(topRated);
-//        scrollPane.add(topRated);
-//        mainShopPanel.add(scrollPane);
 
         String PCLoc = "D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\reShapImages\\Computer.png";
         String consoleLoc = "D:\\3rd Semester\\OOP\\LAB\\LabProject\\src\\assets\\reShapImages\\games.jpg";
@@ -62,24 +35,12 @@ public class ShowProduct extends SearchBar implements MouseListener {
         String y = "Large variety, Branded, Gaming";
 
         mainShopPanel.add(categories);
-        mainShopPanel.add(topRateLabel);
-        mainShopPanel.add(topRated);
         categories.add(toCall(PCLoc, "Computers", y));
         categories.add(toCall(consoleLoc, "Consoles", y));
         categories.add(toCall(gamesLoc, "Games", y));
         categories.add(toCall(AccLoc, "Accessories", y));
         categories.add(toCall(gadgetsLoc, "Gadgets", y));
-
-        topRated.add(toCall(PCLoc, "Computers", y));
-        topRated.add(toCall(consoleLoc, "Consoles", y));
-        topRated.add(toCall(PCLoc, "Games", y));
-        topRated.add(toCall(PCLoc, "Accessories", y));
-        topRated.add(toCall(gadgetsLoc, "Gadgets", y));
-        topRated.add(toCall(gadgetsLoc, "Gadgets", y));
-        topRated.add(toCall(gadgetsLoc, "Gadgets", y));
-//            this.add(mainShopPanel);
-
-        this.setVisible(true);
+        frame.setVisible(true);
     }
 
     public Component toCall(String productLoc, String ptName, String ptDescription) {
@@ -88,10 +49,15 @@ public class ShowProduct extends SearchBar implements MouseListener {
         productPanel.setBackground(new Color(0x9E69E7));
         productPanel.setForeground(Color.white);
         productPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        productPanel.setBorder(new LineBorder(Color.white, 2, true));
         productPanel.addMouseListener(this);
 
-        img = new JLabel();
-        productPic = new ImageIcon(productLoc);
+        imgLabel = new JLabel();
+//        productPic = new ImageIcon(productLoc);
+        ImageIcon icon= new ImageIcon(productLoc);
+        Image icon1 = icon.getImage();
+        Image iconSize = icon1.getScaledInstance(400, 220,Image.SCALE_SMOOTH);
+        ImageIcon productPic=new ImageIcon(iconSize);
 
         productName = new JLabel(ptName);
         productDis = new JLabel(ptDescription);
@@ -100,11 +66,11 @@ public class ShowProduct extends SearchBar implements MouseListener {
         Font pNameFont = new Font("Raleway", Font.BOLD, 35);
 
 
-        img.setIcon(productPic);
-        img.setBounds(0, 0, 400, 220);
+        imgLabel.setIcon(productPic);
+        imgLabel.setBounds(0, 0, 400, 220);
 
-        productPanel.setBounds(50, 50, productPic.getIconWidth(), 300);
-        productPanel.add(img);
+        productPanel.setBounds(50, 50, productPic.getIconWidth(), 350);
+        productPanel.add(imgLabel);
         productPanel.add(productName);
         productPanel.add(productDis);
 //            productPanel.setBackground(Color.white);
@@ -117,6 +83,70 @@ public class ShowProduct extends SearchBar implements MouseListener {
 //            mainShopPanel.add(productPanel);
 //            this.add(mainShopPanel);
 //            this.setVisible(true);
+        return productPanel;
+    }
+    public Component toCall(String productLoc, String ptName, String ptDescription, String  ptNumber, String ptPrice) {
+        order= new JButton("Order Now");
+        productPanel = new JPanel();
+        productPanel.setLayout(null);
+        productPanel.setBackground(new Color(0x9E69E7));
+        productPanel.setForeground(Color.white);
+        productPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        productPanel.setBorder(new LineBorder(Color.white, 2, true));
+        productPanel.addMouseListener(this);
+
+        imgLabel = new JLabel();
+        ImageIcon icon= new ImageIcon(productLoc);
+        Image icon1 = icon.getImage();
+        Image iconSize = icon1.getScaledInstance(400, 220,Image.SCALE_SMOOTH);
+        ImageIcon productPic=new ImageIcon(iconSize);
+
+        productName = new JLabel(ptName);
+        productNo = new JLabel(ptNumber);
+        productRs = new JLabel(ptPrice);
+        productDis = new JLabel(ptDescription);
+        productName.setForeground(Color.white);
+        productNo.setForeground(Color.white);
+        productRs.setForeground(Color.red);
+        productDis.setForeground(Color.white);
+        Font pNameFont = new Font("Raleway", Font.BOLD, 35);
+
+
+        imgLabel.setIcon(productPic);
+        imgLabel.setBounds(0, 0, 400, 220);
+
+        productPanel.setBounds(50, 50, productPic.getIconWidth(), 350);
+        productPanel.add(imgLabel);
+        productPanel.add(productName);
+        productPanel.add(productDis);
+        productPanel.add(productNo);
+        productPanel.add(productRs);
+        productPanel.add(order);
+
+        order.setForeground(Color.white);
+        order.setBackground(new Color(0x722edb));
+
+        productName.setBounds(5, 190, productPic.getIconWidth(), 100);
+        productName.setFont(pNameFont);
+        productDis.setBounds(5, 245, 400, 50);
+        productNo.setBounds(350, 210, 400, 50);
+        order.setBounds(50, 283, 150, 40);
+        productRs.setBounds(335, 283, 400, 40);
+        productDis.setFont(new Font("Raleway", Font.PLAIN, 15));
+        order.setFont(new Font("Raleway", Font.BOLD, 15));
+        productNo.setFont(new Font("Raleway", Font.PLAIN, 15));
+        productRs.setFont(new Font("Arial", Font.BOLD, 18));
+
+        order.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tabbedPane.setVisible(false);
+                searchBarPanel.setVisible(false);
+                dileveryDataPanel.setVisible(true);
+
+            }
+        });
+
         return productPanel;
     }
 
@@ -146,4 +176,5 @@ public class ShowProduct extends SearchBar implements MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 }
